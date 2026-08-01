@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>wJ SPORTS STORE</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ----- YOUR ORIGINAL HEADER STYLES (completely unchanged) ----- */
+        #header{
+            background-color: black;
+            WIDTH: 100%;
+            height: 120px;
+        }
+
+        #logopic{
+            width: 80px;
+            height: 80px;
+            margin-left: 40px;
+            margin-top: 40px;
+        }
+
+        #search{
+            width: 850px;
+            height: 40px;
+            background-color: white;
+            position: relative;
+            left: 700px;
+            bottom: 80px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            border: 1px solid black;
+        }
+
+        #search input{
+            width: 350px;
+            height: 60px;
+            border: 1px solid black;
+            outline: none;
+            font-size: 20px;
+            padding-left: 10px;
+        }
+
+        #nav{
+            background-color: black;
+            width: 100%;
+            height: 50px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            color: white;
+            font-size: 20px;
+            bottom: 30px;
+        }
+
+        a{
+            text-decoration: none;
+            color: white;
+        }
+
+        /* ----- YOUR ORIGINAL BODY STYLES ----- */
+        body {
+            background: #f5f7fa;
+            margin: 0;
+            padding: 0;
+            font-family: system-ui, 'Segoe UI', Roboto, sans-serif;
+            display: block;
+        }
+
+        main {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        /* ----- YOUR ORIGINAL TAG BLOCK STYLES ----- */
+        #tagblock{
+            width: 100%;
+            height: 130px;
+            border: 1px solid rgb(249, 247, 247);
+            display: flex;
+            content: center;
+            align-items: center;
+            justify-content: space-around;
+            font-size: 20px;
+        }
+
+        #tag{
+            width: 200px;
+            height: 50px;
+            background-color: rgb(255, 253, 253);
+            color: rgb(22, 22, 22);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            border: 1px solid black;
+            border-radius: 25px;    
+            transition: all 0.3s ease-in-out;
+        }
+
+        #tag:hover{
+            background-color: black;
+            border: 1px solid white;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* ----- YOUR ORIGINAL SHOP BUTTON STYLES ----- */
+        #shopnow{
+            width: 100%;
+            height: 130px;
+            border: 1px solid rgb(248, 247, 247);
+            display: flex;
+            content: center;
+            align-items: center;
+            justify-content: space-around;
+            font-size: 30px;
+        }
+
+        #shop{
+            width: 27%;
+            height: 45px;
+            font-size: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid black;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease-in-out;
+        }
+
+        #shop:hover{
+            background-color: black;
+            border: 1px solid white;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* ----- YOUR ORIGINAL PRODUCT GRID STYLES ----- */
+        #adds{
+            width: 1500px;
+            height: 950px;
+            flex-wrap: wrap;
+            left: 40px;
+            position: relative;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-top: 20px;
+            border: 1px solid rgb(249, 248, 248);
+        }
+
+        #add{
+            width: 300px;
+            height: 400px;
+            border: 1px solid rgb(235, 234, 234);
+            border-radius: 10px;
+            align-items: center;
+            transition: all 0.3s ease-in-out;
+        }
+
+        #add:hover{
+            transform: scale(1.1);
+            cursor: pointer;
+        }
+
+        /* ----- SCROLLABLE PRODUCT STRIP STYLES (FIXED) ----- */
+        .card {
+            background: white;
+            max-width: 1520px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 1.5rem 1.5rem 2rem;
+            border-radius: 2rem;
+            box-shadow: 0 20px 40px -12px rgba(0,0,0,0.2);
+            box-sizing: border-box;
+        }
+
+        .scroll-wrapper {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1.2rem;
+            background: #ffffff;
+            box-shadow: inset 0 2px 6px rgba(0,0,0,0.02);
+        }
+
+        .photo-strip {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 0.75rem;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            padding: 0.25rem 0.25rem 0.5rem 0.25rem;
+        }
+
+        .photo-strip::-webkit-scrollbar {
+            display: none;
+        }
+
+        .photo-item {
+            flex: 0 0 calc(25% - 0.75rem);
+            min-width: calc(25% - 0.75rem);
+            aspect-ratio: 1 / 1;
+            border-radius: 1.2rem;
+            overflow: hidden;
+            background: #eef2f6;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.02);
+            transition: transform 0.15s ease;
+        }
+
+        .photo-item img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            background: #d9e0e8;
+            transition: scale 0.2s;
+        }
+
+        .photo-item:hover img {
+            scale: 1.02;
+        }
+
+        .nav-controls {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 0.7rem;
+            margin-top: 1.2rem;
+        }
+
+        .nav-btn {
+            background: #f1f4f9;
+            border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 60px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: #1e293b;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+            line-height: 1;
+            user-select: none;
+        }
+
+        .nav-btn:hover {
+            background: #dce2ec;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.04);
+            transform: scale(1.02);
+        }
+        .nav-btn:active {
+            transform: scale(0.94);
+        }
+
+        .nav-btn.forward {
+            background: #1e293b;
+            color: white;
+        }
+        .nav-btn.forward:hover {
+            background: #0f172a;
+        }
+
+        .indicator {
+            font-size: 0.85rem;
+            color: #64748b;
+            background: #f1f4f9;
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            margin-right: auto;
+            letter-spacing: 0.3px;
+        }
+
+        @media (max-width: 550px) {
+            .card { padding: 1rem; }
+            .photo-item { border-radius: 1rem; }
+            .nav-btn { width: 38px; height: 38px; font-size: 1.2rem; }
+        }
+        #brands{
+    width: 100%;
+    height: 150px;
+    border: 1px solid rgb(240, 238, 238);
+    display: flex;
+    content: center;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 30px;
+}
+#brand{
+    width: 170px;
+    height: 100px;
+    background-color: rgb(255, 253, 253);
+    color: rgb(22, 22, 22);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 25px;    
+    transition: all 0.3s ease-in-out;
+    border: #dfe0e2 1px solid;
+}
+#brand:hover{
+    border: #0f172a 1px solid;
+    cursor:pointer;
+    }
+
+/* ----- SIGN UP PAGE STYLES (NEW) ----- */
+#signup-section {
+    background: white;
+    padding: 40px 20px;
+    margin: 30px auto;
+    max-width: 1200px;
+    border-radius: 2rem;
+    box-shadow: 0 20px 40px -12px rgba(0,0,0,0.1);
+}
+
+#signup-section h2 {
+    font-size: 32px;
+    text-align: center;
+    margin-bottom: 30px;
+    color: #1e293b;
+}
+
+.signup-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    align-items: center;
+    justify-content: center;
+}
+
+.signup-form {
+    flex: 1;
+    min-width: 300px;
+    max-width: 500px;
+}
+
+.signup-form input {
+    width: 100%;
+    padding: 14px 18px;
+    margin: 10px 0;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 16px;
+    transition: 0.3s;
+    box-sizing: border-box;
+}
+
+.signup-form input:focus {
+    border-color: #1e293b;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(30, 41, 59, 0.1);
+}
+
+.signup-form button {
+    width: 100%;
+    padding: 14px;
+    background: #1e293b;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 10px;
+}
+
+.signup-form button:hover {
+    background: #0f172a;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.signup-image {
+    flex: 1;
+    min-width: 300px;
+    max-width: 500px;
+}
+
+.signup-image img {
+    width: 100%;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+/* ----- FOOTER STYLES (NEW) ----- */
+footer {
+    background: #0f172a;
+    color: #f1f5f9;
+    padding: 50px 20px 20px;
+    margin-top: 40px;
+}
+
+.footer-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+}
+
+.footer-section h3 {
+    font-size: 18px;
+    margin-bottom: 16px;
+    color: white;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin: 8px 0;
+}
+
+.footer-section ul li a {
+    color: #94a3b8;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-section ul li a:hover {
+    color: white;
+}
+
+.social-links {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.social-links a {
+    display: inline-block;
+    padding: 8px 16px;
+    background: #1e293b;
+    color: #f1f5f9;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 14px;
+}
+
+.social-links a:hover {
+    background: #334155;
+    transform: translateY(-2px);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 30px;
+    margin-top: 30px;
+    border-top: 1px solid #1e293b;
+    color: #64748b;
+    font-size: 14px;
+}
+
+/* ----- SCROLL ANIMATION (NEW - ENHANCED) ----- */
+.scroll-animate {
+    opacity: 0;
+    transform: translateY(50px) scale(0.95);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.scroll-animate.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* Different animation delays for child elements */
+.scroll-animate-delay-1 { transition-delay: 0.1s; }
+.scroll-animate-delay-2 { transition-delay: 0.2s; }
+.scroll-animate-delay-3 { transition-delay: 0.3s; }
+.scroll-animate-delay-4 { transition-delay: 0.4s; }
+.scroll-animate-delay-5 { transition-delay: 0.5s; }
+
+/* Stagger animation for product grid items */
+#adds .scroll-animate {
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Responsive fixes */
+@media (max-width: 768px) {
+    .footer-container {
+        grid-template-columns: 1fr 1fr;
+    }
+    .signup-container {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+    }
+}
+    </style>
+</head>
+<body>
+    <header>
+        <div id="header">
+            <div id="logo"> <img id="logopic" src="logo.jpeg" alt=""> </div>
+            <div id="search">
+                <div id="searchbar"><input type="search" placeholder="🔍 search nike,addidas,clasic"></div>
+                <div><button style="width: 180px;height: 60px; font-size: large;">📌 CHOOSE A CITY</button></div>
+                <div><button style="width: 180px;height: 60px; font-size: large;">👤 ACCOUNTS</button></div>
+                <div><button style="width: 140px;height: 60px; font-size: large;">👜 BAG</button></div>
+            </div>
+        </div>
+        <div id="nav">
+            <div><a href="index.html">HOME</a></div>
+            <div><a href="men.html">MEN</a></div>
+            <div><a href="men.html">WOMEN</a></div>
+            <div><a href="men.html">KIDS</a></div>
+            <div><a href="men.html">CLOATHING</a></div>
+            <div><a href="men.html">SALES</a></div>
+            <div><a href="men.html">BRANDS</a></div>
+            <div><a href="men.html">SENEAKERS</a></div>
+        </div>
+    </header>
+    <main>
+        <!-- TAG BLOCK with scroll animation -->
+        <div id="tagblock" class="scroll-animate">
+            <div id="tag" class="scroll-animate scroll-animate-delay-1">
+                <p>Back to school</p>
+            </div>
+            <div id="tag" class="scroll-animate scroll-animate-delay-2">
+                <p>kids shoes</p>
+            </div>
+            <div id="tag" class="scroll-animate scroll-animate-delay-3">
+                <p>Men shoes</p>
+            </div>
+            <div id="tag" class="scroll-animate scroll-animate-delay-4">
+                <p>Women shoes</p>
+            </div>
+            <div id="tag" class="scroll-animate scroll-animate-delay-5">
+                <p>Men cloths</p>
+            </div>
+            <div id="tag" class="scroll-animate scroll-animate-delay-1">
+                <p>Women cloths</p>
+            </div>
+        </div>
+
+        <!-- AD SECTION with scroll animation -->
+        <div id="ofer" class="scroll-animate"><img style="width: 100%;height: 150px;" src="ad.png" alt=""></div>
+        <div id="shopnow" class="scroll-animate"><button id="shop"><p>Shop now</p></button></div>    
+
+        <!-- AD2 SECTION with scroll animation -->
+        <div id="adpic" class="scroll-animate"><img style="width: 100%;height: 400px;" src="ad2.png" alt=""></div> 
+        <div id="adtext" class="scroll-animate">
+            <h2 style="display: flex;justify-content: center;margin-bottom:0px;">Momentum is Changing With Single Shift.</h2> <br>
+            <h4 style="display: flex;justify-content: center; margin-bottom:0px;">The best collection From Nike,only At WJ</h4>
+            <div id="shopnow"><button id="shop"><p>Shop now</p></button></div>
+        </div>
+
+        <div id="shopnow"></div>
+        <h2 style="font-size: 30px;" class="scroll-animate">Trending Now💥</h2>
+
+        <!-- TRENDING PRODUCTS GRID with scroll animation -->
+        <div id="adds">
+            <div id="add" class="scroll-animate scroll-animate-delay-1"><img style="width: 300px;height: 400px;" src="ad3.webp" alt="">
+            <p style="display: flex;justify-content: center;font-size: 20px;margin-bottom: 10px;font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif">Jorden Retro</p></div>
+            <div id="add" class="scroll-animate scroll-animate-delay-2"><img style="width: 300px;height: 400px; " src="ad4.webp" alt="">
+            <p style="display: flex;justify-content: center;font-size: 20px;margin-bottom: 10px;font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif">Air Max</p></div>
+            <div id="add" class="scroll-animate scroll-animate-delay-3"><img style="width: 300px;height: 400px;" src="ad5.webp" alt="">
+            <p style="display: flex;justify-content: center;font-size: 20px;margin-bottom: 10px;font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">New balance</p></div>
+            <div id="add" class="scroll-animate scroll-animate-delay-4"><img style="width: 300px;height: 400px;" src="ad6.webp" alt="">
+            <p style="display: flex;justify-content: center;font-size: 20px;margin-bottom: 10px;font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">Performance running</p></div>
+            <div id="add" class="scroll-animate scroll-animate-delay-5"><img style="width: 300px;height: 400px;" src="ad7.webp" alt="">
+            <p style="display: flex;justify-content: center;font-size: 20px;margin-bottom: 10px;font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">Best seller</p></div>
+            <div id="add" class="scroll-animate scroll-animate-delay-1"><img style="width: 300px;height: 400px;" src="ad8.webp" alt="">
+            <p style="display: flex;justify-content: center;font-size: 20px;margin-bottom: 10px;font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">Tea and Shorts</p></div>
+            <div id="add" class="scroll-animate scroll-animate-delay-2"><img style="width: 300px;height: 400px;" src="ad9.webp" alt="">
+            <p style="display: flex;justify-content: center;font-size: 20px;margin-bottom: 10px;font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">Grapic tees</p></div>
+            <div id="add" class="scroll-animate scroll-animate-delay-3"><img style="width: 300px;height: 400px;" src="ad10.webp" alt="">
+            <p style="display: flex;justify-content: center;font-size: 20px;margin-bottom: 10px;font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">Back Pack</p></div>
+        </div>
+     
+        <!-- BACK TO SCHOOL SECTION with scroll animation -->
+        <div id="adpic" class="scroll-animate"><img style="width: 100%;height: 600px;margin-top: 50px;" src="ad11.png" alt=""></div> 
+        <div id="adtext" class="scroll-animate">
+            <h2 style="display: flex;justify-content: center;margin-bottom:0px;">Back-to-School Starts Here.</h2> <br>
+            <h4 style="display: flex;justify-content: center; margin-bottom:0px;">Fresh sneakers, standout fits, and everything needed for a strong start to the season.</h4>
+            <div id="shopnow">
+                <button style="width: 20%;" id="shop" class="scroll-animate scroll-animate-delay-1"><p>Boy's back to school</p></button>
+                <button style="width: 20%;" id="shop" class="scroll-animate scroll-animate-delay-2"><p>Girls back to school</p></button>
+                <button style="width: 20%;" id="shop" class="scroll-animate scroll-animate-delay-3"><p>Mens back to school</p></button>
+                <button style="width: 20%;" id="shop" class="scroll-animate scroll-animate-delay-4"><p>womens back to school</p></button>
+            </div>
+        </div>
+
+        <div id="shopnow"></div>
+        <h2 style="font-size: 30px;" class="scroll-animate">BACK TO SCHOOL MUST HAVES</h2>
+        
+        <!-- SCROLLABLE PRODUCT STRIP (WORKING CORRECTLY) -->
+        <div class="card scroll-animate">
+            <h2>
+                products
+                <span></span>
+            </h2>
+
+            <div class="scroll-wrapper">
+                <div id="photoStrip" class="photo-strip">
+                    <div class="photo-item"><img src="ad12.webp" alt="pic 1" loading="lazy"></div>
+                    <div class="photo-item"><img src="ad13.webp" alt="pic 2" loading="lazy"></div>
+                    <div class="photo-item"><img src="ad14.webp" alt="pic 3" loading="lazy"></div>
+                    <div class="photo-item"><img src="ad15.webp" alt="pic 4" loading="lazy"></div>
+                    <div class="photo-item"><img src="ad16.webp" alt="pic 5" loading="lazy"></div>
+                    <div class="photo-item"><img src="ad17.webp" alt="pic 6" loading="lazy"></div>
+                    <div class="photo-item"><img src="ad18.webp" alt="pic 7" loading="lazy"></div>
+                    <div class="photo-item"><img src="ad14.webp" alt="pic 8" loading="lazy"></div>
+                </div>
+            </div>
+
+            <div class="nav-controls">
+                <span class="indicator" id="positionIndicator">1 / 2</span>
+                <button class="nav-btn" id="backBtn" aria-label="scroll backward">‹</button>
+                <button class="nav-btn forward" id="forwardBtn" aria-label="scroll forward">›</button>
+            </div>
+            <p style="margin-top: 0.8rem; font-size: 0.75rem; color: #94a3b8; text-align: right; letter-spacing: 0.3px;">
+                Scroll to see more products
+            </p>
+        </div>
+
+        <!-- DONATE SECTION with scroll animation -->
+        <div id="ofer" class="scroll-animate"><img style="width: 100%;height: 150px;" src="donate.png" alt=""></div>
+        <div id="Donte today" style="display: flex; justify-content: center; align-items: center; margin-top: 20px;" class="scroll-animate">
+            <button id="shop"><p>Donate Today</p></button>
+        </div>
+
+        <div id="shopnow"></div>
+        <h2 style="font-size: 30px; margin-left: 20px;" class="scroll-animate">SHOP BY BRAND</h2>    
+
+        <!-- BRANDS SECTION with scroll animation -->
+        <div id="brands">
+            <div id="brand" class="scroll-animate scroll-animate-delay-1"><img style="width: 170px;height: 100px;" src="jordan_2025.webp" alt=""></div>
+            <div id="brand" class="scroll-animate scroll-animate-delay-2"><img style="width: 170px;height: 100px;" src="new_balance_2025.webp" alt=""></div>
+            <div id="brand" class="scroll-animate scroll-animate-delay-3"><img style="width: 170px;height: 100px;" src="puma_2025.webp" alt=""></div>
+            <div id="brand" class="scroll-animate scroll-animate-delay-4"><img style="width: 170px;height: 100px;" src="adidas_bos_2025.webp" alt=""></div>
+            <div id="brand" class="scroll-animate scroll-animate-delay-5"><img style="width: 170px;height: 100px;" src="hoka_2025.webp" alt=""></div>
+            <div id="brand" class="scroll-animate scroll-animate-delay-1"><img style="width: 170px;height: 100px;" src="asics_2025.webp" alt=""></div>
+            <div id="brand" class="scroll-animate scroll-animate-delay-2"><img style="width: 170px;height: 100px;" src="nike_2025.webp" alt=""></div>
+            <div id="brand" class="scroll-animate scroll-animate-delay-3"><img style="width: 170px;height: 100px;" src="asics_2025.webp" alt=""></div>
+        </div>
+
+        <div id="shopnow"></div>
+        <h2 style="font-size: 30px; margin-left: 20px;" class="scroll-animate">LATEST FROM OUR BRANDS</h2>
+
+        <!-- LATEST FROM BRANDS with scroll animation -->
+        <div id="adds" style="margin: 0px;">
+            <div id="add" class="scroll-animate scroll-animate-delay-1"><img style="width: 300px;height: 400px;" src="AYBL.webp" alt="">
+            <p style="display: flex;justify-content: center;font-size: 20px;margin-bottom: 10px;font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif">ABYL</p></div>
+            <div id="add" class="scroll-animate scroll-animate-delay-2"><img style="width: 300px;height: 400px; " src="PUMA.webp" alt="">
+            <p style="display: flex;justify-content: center;font-size: 20px;margin-bottom: 10px;font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif">PUMA</p></div>
+            <div id="add" class="scroll-animate scroll-animate-delay-3"><img style="width: 300px;height: 400px;" src="new_balance_2025.webp" alt="">
+            <p style="display: flex;justify-content: center;font-size: 20px;margin-bottom: 10px;font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">New balance</p></div>
+            <div id="add" class="scroll-animate scroll-animate-delay-4"><img style="width: 300px;height: 400px;" src="HOODRICH.webp" alt="">
+            <p style="display: flex;justify-content: center;font-size: 20px;margin-bottom: 10px;font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">HOODRICH</p></div>
+        </div>
+
+        <h2 style="font-size: 30px; margin-left: 20px;" class="scroll-animate">GET MORE WITH WJ SPORTS</h2>
+
+        <div id="adds" style="margin: 0px;">
+            <div id="adpic" class="scroll-animate"><img style="width: 100%;height: 600px;margin-top: 50px;" src="AD20.png" alt=""></div> 
+            <div id="adtext" class="scroll-animate">
+                <h2 style="display: flex;justify-content: center;margin-bottom:0px;">PICK OUR BEST ONE.</h2> <br>
+                <h4 style="display: flex;justify-content: center; margin-bottom:0px;"></h4>
+                <div id="shopnow" style="display: flex;justify-content: center;align-items: center;margin-top: 20px;">
+                    <button style="width: 30%;" id="shop" class="scroll-animate scroll-animate-delay-1"><p>Boy's back to school</p></button>
+                    <button style="width: 30%;" id="shop" class="scroll-animate scroll-animate-delay-2"><p>Girls back to school</p></button>
+                    <button style="width: 30%;" id="shop" class="scroll-animate scroll-animate-delay-3"><p>Mens back to school</p></button>
+                    <button style="width: 30%;" id="shop" class="scroll-animate scroll-animate-delay-4"><p>womens back to school</p></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- SIGN UP PAGE (NEW - added at the end before footer) -->
+        <section id="signup-section" class="scroll-animate">
+            <h2>📧 Join the WJ Family</h2>
+            <div class="signup-container">
+                <div class="signup-form">
+                    <input type="text" placeholder="Full Name" required>
+                    <input type="email" placeholder="Email Address" required>
+                    <input type="tel" placeholder="Phone Number">
+                    <button type="submit">Sign Up Now →</button>
+                    <p style="text-align: center; margin-top: 12px; color: #64748b; font-size: 14px;">
+                        Get exclusive offers, early access & more!
+                    </p>
+                </div>
+                <div class="signup-image">
+                    <img src="https://picsum.photos/500/400?random=1" alt="WJ Sports Community">
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER (NEW) -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>🛍️ WJ SPORTS</h3>
+                <p style="color: #94a3b8; line-height: 1.6;">Your one-stop destination for premium sports footwear, apparel, and accessories.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Store Locator</a></li>
+                    <li><a href="#">Track Order</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Customer Service</h3>
+                <ul>
+                    <li><a href="#">Help & FAQ</a></li>
+                    <li><a href="#">Returns Policy</a></li>
+                    <li><a href="#">Shipping Info</a></li>
+                    <li><a href="#">Size Guide</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <div class="social-links">
+                    <a href="#">📸 IG</a>
+                    <a href="#">🐦 X</a>
+                    <a href="#">📘 FB</a>
+                    <a href="#">▶️ YT</a>
+                </div>
+                <p style="color: #94a3b8; margin-top: 12px;">📧 support@wjsports.com</p>
+                <p style="color: #94a3b8;">📞 +92 300 1234567</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 WJ Sports Store. All rights reserved. | Made with ❤️ in Pakistan</p>
+        </div>
+    </footer>
+
+    <script>
+        // ----- SCROLL ANIMATION (ENHANCED) -----
+        document.addEventListener('DOMContentLoaded', function() {
+            const animatedElements = document.querySelectorAll('.scroll-animate');
+            
+            function checkVisibility() {
+                animatedElements.forEach(element => {
+                    const rect = element.getBoundingClientRect();
+                    const windowHeight = window.innerHeight;
+                    
+                    // Element becomes visible when it's 80% into the viewport
+                    if (rect.top <= windowHeight * 0.85) {
+                        element.classList.add('visible');
+                    }
+                });
+            }
+            
+            // Check on load with a small delay for better performance
+            setTimeout(checkVisibility, 100);
+            
+            // Check on scroll with throttling for better performance
+            let ticking = false;
+            window.addEventListener('scroll', function() {
+                if (!ticking) {
+                    window.requestAnimationFrame(function() {
+                        checkVisibility();
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            });
+            
+            window.addEventListener('resize', checkVisibility);
+        });
+
+        // ----- ORIGINAL SCROLL STRIP SCRIPT (unchanged) -----
+        (function() {
+            const strip = document.getElementById('photoStrip');
+            const backBtn = document.getElementById('backBtn');
+            const forwardBtn = document.getElementById('forwardBtn');
+            const indicator = document.getElementById('positionIndicator');
+
+            function getScrollStep() {
+                if (!strip) return 0;
+                const firstItem = strip.querySelector('.photo-item');
+                if (!firstItem) return 0;
+                const style = window.getComputedStyle(strip);
+                const gap = parseFloat(style.gap) || 0;
+                const itemWidth = firstItem.offsetWidth;
+                const step = (itemWidth + gap) * 4;
+                return step;
+            }
+
+            function updateIndicator() {
+                if (!strip) return;
+                const scrollLeft = strip.scrollLeft;
+                const maxScroll = strip.scrollWidth - strip.clientWidth;
+                if (maxScroll <= 0.5) {
+                    indicator.textContent = '1 / 1';
+                    return;
+                }
+                const step = getScrollStep();
+                if (step <= 0) {
+                    indicator.textContent = '1 / 1';
+                    return;
+                }
+                let pageIndex = Math.round(scrollLeft / step);
+                const totalPages = Math.ceil(strip.scrollWidth / step);
+                pageIndex = Math.min(pageIndex, totalPages - 1);
+                pageIndex = Math.max(pageIndex, 0);
+                indicator.textContent = `${pageIndex + 1} / ${Math.max(totalPages, 1)}`;
+            }
+
+            function scrollForward() {
+                if (!strip) return;
+                const step = getScrollStep();
+                if (step <= 0) return;
+                const current = strip.scrollLeft;
+                const maxScroll = strip.scrollWidth - strip.clientWidth;
+                let target = current + step;
+                if (target >= maxScroll - 1) {
+                    target = maxScroll;
+                }
+                strip.scrollTo({ left: target, behavior: 'smooth' });
+                setTimeout(updateIndicator, 180);
+            }
+
+            function scrollBackward() {
+                if (!strip) return;
+                const step = getScrollStep();
+                if (step <= 0) return;
+                const current = strip.scrollLeft;
+                let target = current - step;
+                if (target < 0) target = 0;
+                strip.scrollTo({ left: target, behavior: 'smooth' });
+                setTimeout(updateIndicator, 180);
+            }
+
+            if (forwardBtn) forwardBtn.addEventListener('click', scrollForward);
+            if (backBtn) backBtn.addEventListener('click', scrollBackward);
+
+            let scrollTimeout;
+            if (strip) {
+                strip.addEventListener('scroll', function() {
+                    if (scrollTimeout) clearTimeout(scrollTimeout);
+                    scrollTimeout = setTimeout(() => {
+                        updateIndicator();
+                    }, 60);
+                });
+            }
+
+            let resizeTimer;
+            window.addEventListener('resize', function() {
+                if (resizeTimer) clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(() => {
+                    updateIndicator();
+                }, 120);
+            });
+
+            setTimeout(updateIndicator, 100);
+            window.addEventListener('load', function() {
+                setTimeout(updateIndicator, 200);
+            });
+            setTimeout(updateIndicator, 400);
+        })();
+    </script>
+</body>
+</html>
